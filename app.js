@@ -18,7 +18,8 @@ var indexRoutes= require("./routes/index");
 app.use(methodOverride("_method"));
 app.use(flash());
 //seedDB();
-mongoose.connect("mongodb://localhost:27017/yelp_camp",{ useNewUrlParser: true });
+mongoose.connect("mongodb://neil95:getgoing1@ds161804.mlab.com:61804/yelpcamp1",{ useNewUrlParser: true });
+//mongodb://localhost:27017/yelp_camp
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.set("view engine", "ejs");
