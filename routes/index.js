@@ -10,7 +10,7 @@ router.get('/', function(req, res){
 //AUTH ROUTES
 //show register form
 router.get("/register", function(req, res){
-   res.render("register"); 
+   res.render("register", {page: 'register'}); 
 });
 
 //sign up logic
@@ -19,7 +19,7 @@ router.post("/register", function(req, res){
    User.register(newUser, req.body.password, function(err, user){
       if(err){
           req.flash("error", err.message);
-          return res.render("register");
+          return res.render("register", {error: err.message});
       } 
       passport.authenticate("local")(req, res, function(){ //after logging in,authenticate the user
           req.flash("success","Welcome to YelpCamp" + user.username);
@@ -30,7 +30,7 @@ router.post("/register", function(req, res){
 
 //show login form
 router.get("/login", function(req, res){
-    res.render("login");    
+    res.render("login", {page: 'login'});    
 });
 
 router.post("/login", passport.authenticate("local",
